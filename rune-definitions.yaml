@@ -69,3 +69,15 @@ AwsRune:
     - AWS_ACCESS_KEY_ID="{{ .awsAccessKey }}"
     - AWS_SECRET_ACCESS_KEY="{{ .awsSecretKey }}"
     Volumes:
+TerraformRune:
+  params:
+  - version
+  - command
+  - args
+  - image
+  values:
+    Image: '{{ or .image "sygaldry/terraform-rune"}}:{{or .version "latest" }}'
+    Env:
+    - command="{{ .command }}"
+    - args="{{ .args }}"
+    Volumes:
